@@ -1,0 +1,196 @@
+
+:root {
+    --home-night: #1d2140;
+    --home-night-soft: #2b3161;
+    --home-gold: #e3a83b;
+    --home-gold-dark: #c98f25;
+    --home-mist: #eceaf4;
+    --home-white: #ffffff;
+    --home-violet: #5b4bb7;
+    --home-text: #1d2140;
+    --home-text-soft: #5a5f80;
+    --home-font-title: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --home-font-text: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+}
+
+/* ---------- Bandeau d'accueil ---------- */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 1.5rem 5.5rem;
+    background: var(--home-night);
+    color: var(--home-white);
+    text-align: left;
+    font-family: var(--home-font-text);
+}
+
+/* Le seul élément décoratif : un dé à 20 faces stylisé (hexagone) */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -4rem;
+    width: 26rem;
+    height: 26rem;
+    transform: translateY(-50%) rotate(12deg);
+    background: var(--home-night-soft);
+    clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+    pointer-events: none;
+}
+
+.hero > * {
+    position: relative; /* passe au-dessus du dé décoratif */
+    z-index: 1;
+    max-width: 38rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero h1 {
+    margin: 0 0 1rem;
+    font-family: var(--home-font-title);
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+
+.hero p {
+    margin: 0 0 2rem;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #d6d8ee;
+}
+
+.hero .btn {
+    display: inline-block;
+    padding: 0.85rem 1.75rem;
+    border-radius: 0.4rem;
+    background: var(--home-gold);
+    color: var(--home-night);
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.hero .btn:hover {
+    background: var(--home-gold-dark);
+}
+
+.hero .btn:focus-visible {
+    outline: 3px solid var(--home-white);
+    outline-offset: 3px;
+}
+
+/* ---------- Derniers personnages ---------- */
+
+.latest {
+    padding: 3.5rem 1.5rem 4rem;
+    background: var(--home-mist);
+    color: var(--home-text);
+    font-family: var(--home-font-text);
+}
+
+.latest > h2,
+.latest > .cards {
+    max-width: 62rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.latest h2 {
+    margin-top: 0;
+    margin-bottom: 1.75rem;
+    font-family: var(--home-font-title);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.latest .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1.25rem;
+}
+
+/* Message affiché quand la liste est vide */
+.latest .cards > p {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 1.5rem;
+    border: 2px dashed var(--home-text-soft);
+    border-radius: 0.5rem;
+    color: var(--home-text-soft);
+    text-align: center;
+}
+
+/* ---------- Carte de personnage ---------- */
+
+.latest .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+    border-left: 5px solid var(--home-violet);
+    border-radius: 0.25rem 0.5rem 0.5rem 0.25rem;
+    background: var(--home-white);
+}
+
+.latest .card h3 {
+    margin: 0;
+    font-family: var(--home-font-title);
+    font-size: 1.35rem;
+}
+
+.latest .card h3 a {
+    color: var(--home-text);
+    text-decoration: none;
+}
+
+.latest .card h3 a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--home-gold-dark);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+.latest .card h3 a:focus-visible {
+    outline: 3px solid var(--home-violet);
+    outline-offset: 3px;
+}
+
+.latest .card p {
+    margin: 0;
+    color: var(--home-text-soft);
+}
+
+.latest .card .level {
+    align-self: flex-start;
+    margin-top: 0.25rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    background: var(--home-night);
+    color: var(--home-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* ---------- Petits écrans ---------- */
+
+@media (max-width: 640px) {
+    .hero {
+        padding: 3.5rem 1.25rem 4rem;
+    }
+
+    .hero::after {
+        width: 16rem;
+        height: 16rem;
+        right: -5rem;
+        opacity: 0.6;
+    }
+
+    .latest {
+        padding: 2.5rem 1.25rem 3rem;
+    }
+}
